@@ -1,10 +1,28 @@
 use dominator::{class, html, Dom};
+use futures_signals::signal::Mutable;
 use once_cell::sync::Lazy;
+use std::sync::Arc;
 use wasm_bindgen::prelude::*;
 
-struct App {}
+struct App<'a> {
+    headers: Mutable<Vec<&'a str>>,
+}
 
-impl App {
+impl App<'_> {
+    fn new() -> Arc<Self> {
+        Arc::new(Self {
+            headers: Mutable::new(vec![
+                "Jig Pictures",
+                "Jig Name",
+                "Author",
+                "Author's Badge",
+                "Date",
+                "Instruction Language",
+                "Curators",
+            ]),
+        })
+    }
+
     fn render() -> Dom {
         static MAIN_GRID_CONTAINER: Lazy<String> = Lazy::new(|| {
             class! {
