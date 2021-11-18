@@ -1,11 +1,17 @@
-use dominator::{html, Dom};
+use once_cell::sync::Lazy;
+use dominator::{Dom, html, class};
 use wasm_bindgen::prelude::*;
 
 struct App {}
 
 impl App {
     fn render() -> Dom {
+        static MAIN_GRID_CONTAINER: Lazy<String> = Lazy::new(|| class! {
+          .style("display", "grid")
+        });
+      
         html!("div", {
+          .class(&*MAIN_GRID_CONTAINER)
           .text("Hello, World!")
         })
     }
