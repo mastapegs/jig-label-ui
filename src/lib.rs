@@ -1,11 +1,10 @@
 use dominator::{class, html, Dom};
-use futures_signals::signal::Mutable;
 use once_cell::sync::Lazy;
 use std::sync::Arc;
 use wasm_bindgen::prelude::*;
 
 struct App<'a> {
-  headers: Mutable<Vec<&'a str>>,
+  headers: Vec<&'a str>,
 }
 
 impl App<'_> {
