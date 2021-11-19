@@ -22,7 +22,7 @@ impl App<'_> {
     })
   }
 
-  fn render(state: Arc<Self>) -> Dom {
+  fn render(app: Arc<Self>) -> Dom {
     static MAIN_GRID_CONTAINER: Lazy<String> = Lazy::new(|| {
       class! {
         .style("display", "grid")
@@ -32,29 +32,11 @@ impl App<'_> {
 
     html!("div", {
       .class(&*MAIN_GRID_CONTAINER)
-      .children(&mut [
+      .children(app.headers.iter().map(|header| {
         html!("div", {
-          .text("Jig Pictures")
-        }),
-        html!("div", {
-          .text("Jig Name")
-        }),
-        html!("div", {
-          .text("Author")
-        }),
-        html!("div", {
-          .text("Author's Badge")
-        }),
-        html!("div", {
-          .text("Date")
-        }),
-        html!("div", {
-          .text("Instruction Language")
-        }),
-        html!("div", {
-          .text("Curators")
-        }),
-      ])
+          .text(header)
+        })
+      }))
     })
   }
 }
