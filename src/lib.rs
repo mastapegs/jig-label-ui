@@ -28,7 +28,8 @@ impl App {
   fn render(app: Arc<Self>) -> Dom {
     static FLEX_ITEM: Lazy<String> = Lazy::new(|| {
       class! {
-        .style("flex", "1 1 auto")
+        .style("flex", "1 1 0")
+        .style("border", "solid 1px #eaebef")
       }
     });
     
@@ -36,6 +37,9 @@ impl App {
       class! {
         .style("display", "flex")
         .style("justify-content", "space-between")
+        .style("font-weight", "700")
+        .style("letter-spacing", "-0.16px")
+        .style("color", "#2565d5")
       }
     });
 
@@ -46,14 +50,15 @@ impl App {
       }
     });
 
-    static DEBUG: Lazy<String> = Lazy::new(|| {
+    static MAIN_CONTAINER: Lazy<String> = Lazy::new(|| {
       class! {
-        .style("border", "1px solid red")
-        .style("background", "cyan")
+        .style("background", "#f3f8fe")
+        .style("font-family", "sans-serif")
       }
     });
 
     html!("div", {
+      .class(&*MAIN_CONTAINER)
       .children([
         html!("div", {
           .class(&*HEADER_FLEX_CONTAINER)
