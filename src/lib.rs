@@ -26,6 +26,12 @@ impl App {
   }
 
   fn render(app: Arc<Self>) -> Dom {
+    static FLEX_ITEM: Lazy<String> = Lazy::new(|| {
+      class! {
+        .style("flex", "1 1 auto")
+      }
+    });
+    
     static HEADER_FLEX_CONTAINER: Lazy<String> = Lazy::new(|| {
       class! {
         .style("display", "flex")
@@ -40,12 +46,20 @@ impl App {
       }
     });
 
+    static DEBUG: Lazy<String> = Lazy::new(|| {
+      class! {
+        .style("border", "1px solid red")
+        .style("background", "cyan")
+      }
+    });
+
     html!("div", {
       .children([
         html!("div", {
           .class(&*HEADER_FLEX_CONTAINER)
           .children(app.headers.iter().map(|header| {
             html!("div", {
+              .class(&*FLEX_ITEM)
               .text(header)
             })
           }))
@@ -56,21 +70,27 @@ impl App {
               .class(&*JIGS_CONTAINER)
               .children([
                 html!("div", {
+                  .class(&*FLEX_ITEM)
                   .text(&jig.jig_name)
                 }),
                 html!("div", {
+                  .class(&*FLEX_ITEM)
                   .text(&jig.author)
                 }),
                 html!("div", {
+                  .class(&*FLEX_ITEM)
                   .text(&jig.author_badge)
                 }),
                 html!("div", {
+                  .class(&*FLEX_ITEM)
                   .text(&jig.date)
                 }),
                 html!("div", {
+                  .class(&*FLEX_ITEM)
                   .text(&jig.language)
                 }),
                 html!("div", {
+                  .class(&*FLEX_ITEM)
                   .text(&jig.curators[0])
                 }),
               ])
