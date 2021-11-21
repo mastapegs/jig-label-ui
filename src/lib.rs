@@ -23,15 +23,15 @@ impl App<'_> {
   }
 
   fn render(app: Arc<Self>) -> Dom {
-    static MAIN_GRID_CONTAINER: Lazy<String> = Lazy::new(|| {
+    static MAIN_FLEX_CONTAINER: Lazy<String> = Lazy::new(|| {
       class! {
-        .style("display", "grid")
-        .style("grid-template-columns", "[jig-pics] 200px [jig-name] auto [author] auto [author-badge] auto [date] auto [instr-lang] auto [curators] auto")
+        .style("display", "flex")
+        .style("justify-content", "space-between")
       }
     });
 
     html!("div", {
-      .class(&*MAIN_GRID_CONTAINER)
+      .class(&*MAIN_FLEX_CONTAINER)
       .children(app.headers.iter().map(|header| {
         html!("div", {
           .text(header)
