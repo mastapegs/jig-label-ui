@@ -3,6 +3,15 @@ use once_cell::sync::Lazy;
 use std::sync::Arc;
 use wasm_bindgen::prelude::*;
 
+struct JigData {
+  jig_name: String,
+  author: String,
+  author_badge: String,
+  date: String,
+  language: String,
+  curators: Vec<String>,
+}
+
 struct App<'a> {
   headers: Vec<&'a str>,
 }
@@ -11,7 +20,6 @@ impl App<'_> {
   fn new() -> Arc<Self> {
     Arc::new(Self {
       headers: vec![
-        "Jig Pictures",
         "Jig Name",
         "Author",
         "Author's Badge",
@@ -23,7 +31,7 @@ impl App<'_> {
   }
 
   fn render(app: Arc<Self>) -> Dom {
-    static MAIN_FLEX_CONTAINER: Lazy<String> = Lazy::new(|| {
+    static HEADER_FLEX_CONTAINER: Lazy<String> = Lazy::new(|| {
       class! {
         .style("display", "flex")
         .style("justify-content", "space-between")
@@ -31,12 +39,24 @@ impl App<'_> {
     });
 
     html!("div", {
-      .class(&*MAIN_FLEX_CONTAINER)
-      .children(app.headers.iter().map(|header| {
+      .children([
         html!("div", {
-          .text(header)
+          .class(&*HEADER_FLEX_CONTAINER)
+          .children(app.headers.iter().map(|header| {
+            html!("div", {
+              .text(header)
+            })
+          }))
+        }),
+        html!("div", {
+          .class(&*HEADER_FLEX_CONTAINER)
+          .children(app.headers.iter().map(|header| {
+            html!("div", {
+              .text(header)
+            })
+          }))
         })
-      }))
+      ])
     })
   }
 }
