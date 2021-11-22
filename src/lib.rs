@@ -30,6 +30,7 @@ impl App {
       class! {
         .style("flex", "1 1 0")
         .style("border", "solid 1px #eaebef")
+        .style("padding", "5px")
       }
     });
     
@@ -128,6 +129,7 @@ pub fn main_js() -> Result<(), JsValue> {
     String::from("Instruction Language"),
     String::from("Curators"),
   ];
+  
   let app = App::new(jig_headers, jigs);
   dominator::append_dom(&dominator::body(), App::render(app));
 
