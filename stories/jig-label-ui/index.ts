@@ -1,1 +1,1 @@
-export { JigLabelUI } from "./JigLabelUI";
+export { JigLabelUI } from "./jig-label-ui";

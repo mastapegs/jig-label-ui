@@ -1,5 +1,5 @@
 import { html } from "lit";
-import "./JigLabelUI";
+import "./jig-label-ui";
 
 export default {
   title: "Jig Label UI",
