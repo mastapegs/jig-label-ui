@@ -19,7 +19,7 @@ module.exports = {
   },
   rules: {
     "import/extensions": [
-      "error",
+      "off",
       "ignorePackages",
       {
         js: "never",
