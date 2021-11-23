@@ -12,6 +12,13 @@ export class JigLabelUI extends LitElement {
       display: flex;
       justify-content: space-between;
     }
+    .jig {
+      display: flex;
+      justify-content: space-between;
+    }
+    .flex {
+      flex: 1 1 0;
+    }
   `;
 
   @property({ attribute: false })
@@ -31,10 +38,19 @@ export class JigLabelUI extends LitElement {
     return html`
       <div class="container">
         <div class="headers">
-          ${this.headers.map((header) => html`<div>${header}</div>`)}
+          ${this.headers.map(
+            (header) => html`<div class="flex">${header}</div>`
+          )}
         </div>
         ${this.jigs.map((jig) => {
-          return html`<div>${jig.jig_name}</div>`;
+          return html`<div class="jig">
+            <div class="flex">${jig.jig_name}</div>
+            <div class="flex">${jig.author}</div>
+            <div class="flex">${jig.author_badge}</div>
+            <div class="flex">${jig.date}</div>
+            <div class="flex">${jig.language}</div>
+            <div class="flex">${jig.curators.join(", ")}</div>
+          </div>`;
         })}
       </div>
     `;
