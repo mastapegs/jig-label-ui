@@ -7,10 +7,14 @@ export class JigLabelUI extends LitElement {
   static styles = css`
     .container {
       font-family: sans-serif;
+      background: #f3f8fe;
+      border: solid 1px #c4d9f7;
     }
     .headers {
       display: flex;
       justify-content: space-between;
+      font-weight: 700;
+      color: #2565d5;
     }
     .jig {
       display: flex;
@@ -18,6 +22,8 @@ export class JigLabelUI extends LitElement {
     }
     .flex {
       flex: 1 1 0;
+      border: solid 1px #eaebef;
+      padding: 5px;
     }
   `;
 
