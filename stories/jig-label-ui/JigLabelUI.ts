@@ -13,7 +13,14 @@ interface JigData {
 @customElement("jib-label-ui")
 export class JigLabelUI extends LitElement {
   @property({ attribute: false })
-  headers: string[] = ["1", "2"];
+  headers: string[] = [
+    "Jig Name",
+    "Author",
+    "Author's Badge",
+    "Date",
+    "Instruction Language",
+    "Curators",
+  ];
 
   @property({ attribute: false })
   jigs: JigData[] = [];
