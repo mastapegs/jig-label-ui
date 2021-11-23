@@ -7,7 +7,8 @@
     "build": "rimraf dist/js && rollup --config",
     "start": "rimraf dist/js && rollup --config --watch",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint . --ext .ts,.js --fix"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -15,8 +16,16 @@
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
     "@storybook/web-components": "^6.3.12",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
     "@wasm-tool/rollup-plugin-rust": "^1.0.6",
     "babel-loader": "^8.2.3",
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "2.4.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.50.2",
     "rollup-plugin-livereload": "^2.0.0",
