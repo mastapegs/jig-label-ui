@@ -5,4 +5,4 @@ export default {
   title: "Jig Label UI",
 };
 
-export const Primary = () => html`<jib-label-ui></jib-label-ui>`;
+export const Primary = () => html`<jib-label-ui test="test1"></jib-label-ui>`;
