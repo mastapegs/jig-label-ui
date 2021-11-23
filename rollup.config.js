@@ -3,7 +3,7 @@ import serve from "rollup-plugin-serve";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
 
-const is_watch = !!process.env.ROLLUP_WATCH;
+const isWatch = !!process.env.ROLLUP_WATCH;
 
 export default {
   input: {
@@ -19,14 +19,14 @@ export default {
       serverPath: "js/",
     }),
 
-    is_watch &&
+    isWatch &&
       serve({
         contentBase: "dist",
         open: true,
       }),
 
-    is_watch && livereload("dist"),
+    isWatch && livereload("dist"),
 
-    !is_watch && terser(),
+    !isWatch && terser(),
   ],
 };
