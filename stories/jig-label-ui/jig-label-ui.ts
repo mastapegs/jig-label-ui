@@ -1,17 +1,19 @@
-import { LitElement, html } from "lit";
+import { LitElement, html, css } from "lit";
 import { customElement, property } from "lit/decorators";
-
-interface JigData {
-  jig_name: string;
-  author: string;
-  author_badge: string;
-  date: string;
-  language: string;
-  curators: string[];
-}
+import { JigData } from "./types";
 
 @customElement("jib-label-ui")
 export class JigLabelUI extends LitElement {
+  static styles = css`
+    .container {
+      font-family: sans-serif;
+    }
+    .headers {
+      display: flex;
+      justify-content: space-between;
+    }
+  `;
+
   @property({ attribute: false })
   headers: string[] = [
     "Jig Name",
@@ -26,8 +28,15 @@ export class JigLabelUI extends LitElement {
   jigs: JigData[] = [];
 
   render() {
-    return html`<ul>
-      ${this.headers.map((header) => html`<li>${header}</li>`)}
-    </ul>`;
+    return html`
+      <div class="container">
+        <div class="headers">
+          ${this.headers.map((header) => html`<div>${header}</div>`)}
+        </div>
+        ${this.jigs.map((jig) => {
+          return html`<div>${jig.jig_name}</div>`;
+        })}
+      </div>
+    `;
   }
 }
