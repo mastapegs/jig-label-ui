@@ -54,6 +54,7 @@ impl App {
             class! {
               .style("background", "#f3f8fe")
               .style("font-family", "sans-serif")
+              .style("border", "solid 1px #c4d9f7")
             }
         });
 
@@ -131,7 +132,7 @@ pub fn main_js() -> Result<(), JsValue> {
             curators: vec![String::from("Anat (13.7.21)")],
         },
         JigData {
-            jig_name: String::from("Hebrew Letters"),
+            jig_name: String::from("Hebrew Numbers & Balloons"),
             author: String::from("Michael Wikes"),
             author_badge: String::from("JI Team"),
             date: String::from("Aug. 5, 2020"),
